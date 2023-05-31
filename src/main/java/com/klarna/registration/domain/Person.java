@@ -1,12 +1,16 @@
 package com.klarna.registration.domain;
 
+import org.springframework.lang.NonNull;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 public class Person {
+    @NonNull
     //Social Security Number
     private String ssn;
+    @NonNull
     private String name;
     private String spouseName;
 

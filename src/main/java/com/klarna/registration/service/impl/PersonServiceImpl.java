@@ -25,6 +25,10 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public void save(Person person) {
+        if (person.getSsn() == null || person.getName() == null) {
+            throw new IllegalArgumentException("SSN and Name must not be null.");
+        }
+
         if(personRegistry.containsKey(person.getSsn())) {
             throw new PlayerServiceException("Person with SSN: " + person.getSsn() + " already exists.");
         }

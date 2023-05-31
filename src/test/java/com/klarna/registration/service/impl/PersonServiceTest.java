@@ -82,4 +82,32 @@ public class PersonServiceTest {
         Exception exception = assertThrows(PlayerServiceException.class, () -> personService.save(person2));
         assertEquals("Person with SSN: 123456 already exists.", exception.getMessage());
     }
+
+    @Test
+    public void testSavePersonWithNullName() {
+        Map<String, Integer> children = new HashMap<>();
+        children.put("John", 5);
+        Person person = new Person("123456", null, "Spouse", children);
+
+        assertThrows(IllegalArgumentException.class, () -> personService.save(person));
+    }
+
+    @Test
+    public void testSavePersonWithNullSsn() {
+        Map<String, Integer> children = new HashMap<>();
+        children.put("John", 5);
+        Person person = new Person(null, "Test", "Spouse", children);
+
+        assertThrows(IllegalArgumentException.class, () -> personService.save(person));
+    }
+
+    @Test
+    public void testSavePersonWithNullSsnAndName() {
+        Map<String, Integer> children = new HashMap<>();
+        children.put("John", 5);
+        Person person = new Person(null, null, "Spouse", children);
+
+        assertThrows(IllegalArgumentException.class, () -> personService.save(person));
+    }
+
 }
