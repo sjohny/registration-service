@@ -3,7 +3,6 @@ package com.klarna.registration.service.impl;
 import com.klarna.registration.domain.Person;
 import com.klarna.registration.exception.PlayerServiceException;
 import com.klarna.registration.service.PersonService;
-import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,14 +13,22 @@ import java.util.Map;
  *
  * The social security number is unique for each person.
  * The social security number is always valid and not null when provided.
- * Children's ages are always valid and not null when provided.
+ * Children's ages are always valid, positive and not null when provided.
  * The age of a child will never be updated, so the oldest child will remain the oldest.
+ *
+ * In a real-world scenario, we would replace the in-memory HashMap used in this example with a persistent data store like a database.
  */
-@Service
+
 public class PersonServiceImpl implements PersonService {
 
     //Registry repository
-    private Map<String, Person> personRegistry = new HashMap<>();
+    private Map<String, Person> personRegistry;
+
+
+
+    public PersonServiceImpl() {
+        this.personRegistry = new HashMap<>();
+    }
 
     @Override
     public void save(Person person) {

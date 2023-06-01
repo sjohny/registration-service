@@ -1,6 +1,6 @@
 # RegistrationService
 ## Overview
-RegistrationService is a Spring Boot-based RESTful API that manages a simple registration system. It allows users to save and retrieve Person details. It supports features like getting the oldest child of a person and handling persons with optional spouse names.
+RegistrationService is a RESTful API that manages a simple registration system. It allows users to save and retrieve Person details. It supports features like getting the oldest child of a person and handling persons with optional spouse names.
 
 The key features of RegistrationService include:
 * Saving a Person object in the system.
